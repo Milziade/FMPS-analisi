@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/result.css">
+    <title>Data visualization - Plotly</title>
+</head>
+<body>
+    <main>
+        <h1>{{title}}</h1>
+        <h2>{{time_start}}</h2>
+        <h2>Tempo di acquisizione: {{time_exp}} min</h2>
+        <br>
+        <div id="chart_lines" class="chart_lines"></div>
+        <div id="chart_heatmap" class="chart_heatmap"></div>
+        <div id="chart_3D" class="chart_3D"></div>
+        <div id="chart_total" class="chart_3D"></div>
+        <div id="chart_total_size"></div>
+    </main>
+    
+    <div>
+        <button ></button>
+    </div>
+</body>
+
+<script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>
+<script type="text/javascript">
+    var data = {{data_lines | safe}};
+
+    Plotly.newPlot('chart_lines', data, {});
+</script>
+
+<script type="text/javascript">
+    var data = {{data_heatmap | safe}};
+
+    Plotly.newPlot('chart_heatmap', data, {});
+</script>
+
+<script type="text/javascript">
+    var data = [{
+        x: {{x}},
+        y: {{y}},
+        z: {{z}},
+
+        type: 'surface',
+    }];
+
+    var layout = {
+        title: '3D rappresentation',
+        autosize: false,
+        width: 800,
+        height: 600,
+    };
+    Plotly.newPlot('chart_3D', data, layout);
+</script>
+
+<script type="text/javascript">
+    var data = {{total_conc | safe}};
+    Plotly.newPlot('chart_total', data, {});
+</script>
+
+<script type="text/javascript">
+    var data = {{tot_size_bin | safe}};
+    Plotly.newPlot('chart_total_size', data, {});
+</script>
+</html>

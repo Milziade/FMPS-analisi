@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    margin: 5px;
+    background-color: rgb(241, 239, 236);
+}
+
+form {
+    margin-top: 5%;
+}
+
+#select, #btn {
+    font-size: large;
+    border-radius: 7px;
+}
+
+#btn {
+    background-color:rgba(119, 224, 58, 0.822);
+}
+
+#select {
+    background-color: rgb(201, 206, 211);
+}
